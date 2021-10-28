@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+#define tam 100
+
+typedef struct 
+{
+    int cod;
+    char nome[30];
+    float preco;
+}lanches;
+
+int main() {
+    lanches lanche[tam];
+    int qtd,i,j,cod_p,qtd_p;
+    float prc=0,pag=0;
+    scanf("%d",&qtd);
+    for(i=0;i<qtd;i++)
+    {
+        scanf("%d",&lanche[i].cod);
+        scanf(" %[^\n]",lanche[i].nome);
+        scanf("%f",&lanche[i].preco);
+    }
+    do
+    {
+        scanf("%d",&cod_p);
+        if(cod_p!=0)
+        {
+            scanf("%d",&qtd_p);
+            for(i=0;i<qtd;i++)
+            {
+                if(lanche[i].cod == cod_p && qtd_p>0)
+                {
+                    prc=lanche[i].preco*qtd_p;
+                    pag+=prc;
+                }
+            }
+        }
+    }while(cod_p!=0);
+    printf("%.2f",pag);
+	return 0;
+}
